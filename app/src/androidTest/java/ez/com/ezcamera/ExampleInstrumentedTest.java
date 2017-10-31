@@ -1,4 +1,4 @@
-package ez.com.therealone;
+package ez.com.ezcamera;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
