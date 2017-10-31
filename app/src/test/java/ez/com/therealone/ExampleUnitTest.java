@@ -1,4 +1,4 @@
-package com.example.thomas.therealone;
+package ez.com.therealone;
 
 import org.junit.Test;
 

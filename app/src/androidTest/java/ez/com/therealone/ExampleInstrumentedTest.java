@@ -1,4 +1,4 @@
-package com.example.thomas.therealone;
+package ez.com.therealone;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.thomas.therealone", appContext.getPackageName());
+        assertEquals("ez.com.therealone", appContext.getPackageName());
     }
 }
