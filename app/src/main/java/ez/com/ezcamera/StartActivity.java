@@ -15,13 +15,10 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 public class StartActivity extends AppCompatActivity implements SensorEventListener
 {
-    private static String modes[] = {"Accelere", "Ralenti", "Video" , "Photo", "Carre", "Panorama", };
+    private String modes[] = {"Accelere", "Ralenti", "Video" , "Photo", "Carre", "Panorama", };
+    private int indexModes = 0;
     private SensorManager sensorManager;
     private Sensor accelerometer;
-
-    private static final float SHAKE_THRESHOLD = 3.25f; // m/S2
-    private static final int MIN_TIME_BETWEEN_SHAKES_MILLISECS = 1000;
-    private long lastShakeTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,19 +37,15 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
                     public void onMenuSelected(int i) {
-                        Snackbar.make(
-                                findViewById(R.id.start_constraint),
-                                "Mode " + modes[i] + ".",
-                                Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(findViewById(R.id.start_constraint),
+                                        "Mode " + modes[i] + ".",
+                                        Snackbar.LENGTH_SHORT).show();
                     }
                 });
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
-        /*
-         * Now we need to register the listener. Very short refresh frequency for shaking.
-         */
+        
         if(accelerometer != null)
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -71,10 +64,23 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
             float x = sensorEvent.values[0];
 
             if(x > 10.0)
-                Snackbar.make(findViewById(R.id.start_constraint), "Shake left", Snackbar.LENGTH_SHORT).show();
+            {
+                if(indexModes > 0)
+                    indexModes--;
+                Snackbar.make(findViewById(R.id.start_constraint),
+                                "Mode " + modes[indexModes],
+                                Snackbar.LENGTH_SHORT).show();
+            }
+
 
             if(x < -7.0)
-                Snackbar.make(findViewById(R.id.start_constraint), "Shake right", Snackbar.LENGTH_SHORT).show();
+            {
+                if(indexModes < modes.length - 1)
+                    indexModes++;
+                Snackbar.make(findViewById(R.id.start_constraint),
+                                "Mode " + modes[indexModes],
+                                Snackbar.LENGTH_SHORT).show();
+            }
         }
     }
 
