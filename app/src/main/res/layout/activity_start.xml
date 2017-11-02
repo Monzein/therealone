@@ -38,7 +38,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="80dp"
             android:text="Swipe"
-            android:textSize="50sp"/>
+            android:textSize="50sp"
+            android:id="@+id/textview"/>
 
     </FrameLayout>
     

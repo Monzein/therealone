@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
@@ -26,12 +27,16 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
     private float x_down; // Used to manage left/right swipe
     private static int MIN_DISTANCE_SWIPE = 300;
 
+    private TextView textview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        textview = (TextView) findViewById(R.id.textview);
+        textview.setText(MODES[indexModes]);
         CircleMenu circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.ic_button_menu, R.drawable.ic_button_camera)
                 .addSubMenu(Color.parseColor("#FF0000"),R.drawable.ic_button_camera)
@@ -43,9 +48,11 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
                     public void onMenuSelected(int i) {
-                        Snackbar.make(findViewById(R.id.start_constraint),
+                        /*Snackbar.make(findViewById(R.id.start_constraint),
                                         "Mode " + MODES[i] + ".",
-                                        Snackbar.LENGTH_SHORT).show();
+                                        Snackbar.LENGTH_SHORT).show();*/
+                        indexModes=i;
+                        changeMode();
                     }
                 });
 
@@ -141,9 +148,7 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
         if(indexModes < MODES.length - 1)
             indexModes++;
 
-        Snackbar.make(findViewById(R.id.start_constraint),
-                "Mode " + MODES[indexModes],
-                Snackbar.LENGTH_SHORT).show();
+        changeMode();
     }
 
     private void previousMode()
@@ -151,8 +156,14 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
         if(indexModes > 0)
             indexModes--;
 
+        changeMode();
+    }
+
+    private void changeMode(){
+
         Snackbar.make(findViewById(R.id.start_constraint),
                 "Mode " + MODES[indexModes],
                 Snackbar.LENGTH_SHORT).show();
+        textview.setText(MODES[indexModes]);
     }
 }
