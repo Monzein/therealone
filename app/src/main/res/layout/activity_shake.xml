@@ -8,4 +8,71 @@
     android:layout_height="match_parent"
     tools:context="ez.com.ezcamera.ShakeActivity">
 
+    <TextView
+        android:id="@+id/text_accelere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/text_ralenti"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="Accelere"/>
+
+    <TextView
+        android:id="@id/text_ralenti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/text_accelere"
+        app:layout_constraintRight_toLeftOf="@+id/text_video"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="Ralenti"/>
+
+    <TextView
+        android:id="@id/text_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/text_ralenti"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="Video"/>
+
+    <TextView
+        android:id="@+id/text_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/text_carre"
+        app:layout_constraintTop_toBottomOf="@id/text_accelere"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="Photo"/>
+
+    <TextView
+        android:id="@id/text_carre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/text_photo"
+        app:layout_constraintRight_toLeftOf="@+id/text_panorama"
+        app:layout_constraintTop_toBottomOf="@id/text_accelere"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="Carre"/>
+
+    <TextView
+        android:id="@id/text_panorama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/text_carre"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_accelere"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="Panorama"/>
+
+
 </android.support.constraint.ConstraintLayout>

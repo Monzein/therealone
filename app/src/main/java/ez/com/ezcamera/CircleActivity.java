@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -49,13 +50,14 @@ public class CircleActivity extends AppCompatActivity
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
                     public void onMenuSelected(int i) {
-                        /*Snackbar.make(findViewById(R.id.start_constraint),
-                                        "Mode " + MODES[i] + ".",
-                                        Snackbar.LENGTH_SHORT).show();*/
                         indexModes=i;
                         changeMode();
                     }
                 });
+
+        TextView textView = (TextView) findViewById(R.id.text_photo);
+        textView.setTextColor(Color.parseColor("#1976D2"));
+        textView.setTypeface(null, Typeface.BOLD);
     }
 
     private void nextMode()
@@ -74,11 +76,73 @@ public class CircleActivity extends AppCompatActivity
         changeMode();
     }
 
-    private void changeMode(){
+    private void changeMode()
+    {
+        TextView text = (TextView) findViewById(R.id.text_accelere);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
 
-        Snackbar.make(findViewById(R.id.start_constraint),
-                "Mode " + MODES[indexModes],
-                Snackbar.LENGTH_SHORT).show();
+        text = (TextView) findViewById(R.id.text_ralenti);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+        text = (TextView) findViewById(R.id.text_video);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+        text = (TextView) findViewById(R.id.text_photo);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+        text = (TextView) findViewById(R.id.text_carre);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+        text = (TextView) findViewById(R.id.text_panorama);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+
+        switch(MODES[indexModes])
+        {
+            case "Accelere" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_accelere);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Ralenti" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_ralenti);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Video" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_video);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Photo" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_photo);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Carre" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_carre);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Panorama" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_panorama);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+        }
         circleMenu.setMainMenu(COLOR,MODES_IMG[indexModes],MODES_IMG[indexModes]);
     }
 

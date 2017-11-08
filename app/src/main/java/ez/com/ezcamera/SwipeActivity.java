@@ -1,14 +1,18 @@
 package ez.com.ezcamera;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SwipeActivity extends AppCompatActivity
 {
@@ -23,6 +27,10 @@ public class SwipeActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe);
+
+        TextView textView = (TextView) findViewById(R.id.text_photo);
+        textView.setTextColor(Color.parseColor("#1976D2"));
+        textView.setTypeface(null, Typeface.BOLD);
     }
 
     /**
@@ -80,11 +88,73 @@ public class SwipeActivity extends AppCompatActivity
         changeMode();
     }
 
-    private void changeMode(){
+    private void changeMode()
+    {
+        TextView text = (TextView) findViewById(R.id.text_accelere);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
 
-        Snackbar.make(findViewById(R.id.swipe_constraint),
-                "Mode " + MODES[indexModes],
-                Snackbar.LENGTH_SHORT).show();
+        text = (TextView) findViewById(R.id.text_ralenti);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+        text = (TextView) findViewById(R.id.text_video);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+        text = (TextView) findViewById(R.id.text_photo);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+        text = (TextView) findViewById(R.id.text_carre);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+        text = (TextView) findViewById(R.id.text_panorama);
+        text.setTextColor(Color.parseColor("#7C7C7C"));
+        text.setTypeface(null);
+
+        switch(MODES[indexModes])
+        {
+            case "Accelere" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_accelere);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Ralenti" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_ralenti);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Video" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_video);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Photo" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_photo);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Carre" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_carre);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+            case "Panorama" :
+            {
+                TextView textView = (TextView) findViewById(R.id.text_panorama);
+                textView.setTextColor(Color.parseColor("#1976D2"));
+                textView.setTypeface(null, Typeface.BOLD);
+                break;
+            }
+        }
     }
 
     @Override
