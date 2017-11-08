@@ -16,11 +16,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.TextureView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
+
+import org.w3c.dom.Text;
 
 public class CircleActivity extends AppCompatActivity
 {
@@ -32,6 +37,9 @@ public class CircleActivity extends AppCompatActivity
     private int indexModes = 3;
 
     private CircleMenu circleMenu;
+
+    private Button button_capture;
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,6 +66,28 @@ public class CircleActivity extends AppCompatActivity
         TextView textView = (TextView) findViewById(R.id.text_photo);
         textView.setTextColor(Color.parseColor("#1976D2"));
         textView.setTypeface(null, Typeface.BOLD);
+
+        image = (ImageView)findViewById(R.id.imageView);
+        button_capture = (Button)findViewById(R.id.button_capture);
+        button_capture.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                switch(indexModes){
+                    case 3:
+                        image.setImageResource(R.drawable.stylo);
+                        break;
+                    case 2:
+                        image.setImageResource(R.drawable.usb);
+                        break;
+                    case 5:
+                        image.setImageResource(R.drawable.mouchoir);
+                        break;
+                    default:
+                        image.setImageResource(R.drawable.fail);
+                }
+            }
+        });
     }
 
     private void nextMode()
