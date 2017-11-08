@@ -19,8 +19,12 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 public class StartActivity extends AppCompatActivity implements SensorEventListener
 {
-    private static String MODES[] = {"Accelere", "Ralenti", "Video" , "Photo", "Carre", "Panorama", };
-    private int indexModes = 0;
+    private static String MODES[] = {"Accelere", "Ralenti", "Video" , "Photo", "Carre", "Panorama" };
+    private static int MODES_IMG[] = {R.drawable.ic_fast, R.drawable.ic_slow, R.drawable.ic_movie,
+            R.drawable.ic_button_camera,R.drawable.ic_square,R.drawable.ic_panoramic};
+    private static int COLOR = Color.parseColor("#ffffff");
+
+    private int indexModes = 3;
     private SensorManager sensorManager;
     private Sensor accelerometer;
 
@@ -28,6 +32,7 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
     private static int MIN_DISTANCE_SWIPE = 300;
 
     private TextView textview;
+    private CircleMenu circleMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,14 +42,14 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
 
         textview = (TextView) findViewById(R.id.textview);
         textview.setText(MODES[indexModes]);
-        CircleMenu circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
-        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.ic_button_menu, R.drawable.ic_button_camera)
-                .addSubMenu(Color.parseColor("#FF0000"),R.drawable.ic_button_camera)
-                .addSubMenu(Color.parseColor("#00FF00"),R.drawable.ic_button_camera)
-                .addSubMenu(Color.parseColor("#0000FF"),R.drawable.ic_button_camera)
-                .addSubMenu(Color.parseColor("#FF00FF"),R.drawable.ic_button_camera)
-                .addSubMenu(Color.parseColor("#FFFF00"),R.drawable.ic_button_camera)
-                .addSubMenu(Color.parseColor("#00FFFF"),R.drawable.ic_button_camera)
+        circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
+        circleMenu.setMainMenu(COLOR,MODES_IMG[indexModes], MODES_IMG[indexModes])
+                .addSubMenu(COLOR,MODES_IMG[0])
+                .addSubMenu(COLOR,MODES_IMG[1])
+                .addSubMenu(COLOR,MODES_IMG[2])
+                .addSubMenu(COLOR,MODES_IMG[3])
+                .addSubMenu(COLOR,MODES_IMG[4])
+                .addSubMenu(COLOR,MODES_IMG[5])
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
                     public void onMenuSelected(int i) {
@@ -165,5 +170,6 @@ public class StartActivity extends AppCompatActivity implements SensorEventListe
                 "Mode " + MODES[indexModes],
                 Snackbar.LENGTH_SHORT).show();
         textview.setText(MODES[indexModes]);
+        circleMenu.setMainMenu(COLOR,MODES_IMG[indexModes],MODES_IMG[indexModes]);
     }
 }
